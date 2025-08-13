@@ -17,7 +17,7 @@ Estableceremos algunas reglas que no serán estrictas pero sí afectan fuertemen
 
 ## Cómo participar ❓
 Primero debes hacer un Fork de este repositorio, dentro del mismo se encuentra el archivo `rustfmt.toml` el cual contiene un ejemplo basico de un archivo de configuracion de rustfmt, se deberán agregar, quitar, o modificar las distintas opciones de configuración con el fin de realizar el peor formato de código.   
-Luego, se debe aplicar el formato, esto suele suceder de forma automática aunque también se puede realizar manualmente con el comando `cargo fmt`, finalmente se debe publicar la postulación como una Pull Request a este mismo repositorio, indicando en la descripción de la Pull Request el nombre de usuario y apodo de Discord con el que los identificamos dentro de nuestra comunidad.   
+Luego, se debe aplicar el formato, esto suele suceder de forma automática aunque también se puede realizar manualmente con el comando `cargo fmt`, finalmente se debe publicar la postulación como una Pull Request a este mismo repositorio, indicando en la descripción de la Pull Request el nombre de usuario y apodo de Discord con el que los identificamos dentro de nuestra comunidad adjuntando pruebas de haber interactuado con dentro de la comunidad (alguna captura de mensajes, colaboracion en GitHub o participacion en los canales de Voz).   
 
 ## Recursos 📚
 Como recursos, les dejamos la documentación de la configuración de rustfmt, como también el repo de github con el código fuente, para que puedan conocer las distintas configuraciones que se pueden aplicar:
