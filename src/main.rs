@@ -3,19 +3,28 @@
 
 // ----------------------------------------------------------------------------
 
-use std::collections::{BTreeMap, BTreeSet};
-use std::fmt::{self, Debug, Display};
-use std::io::{self, Read, Write};
-use std::path::{Path, PathBuf};
-
+use std::collections::BTreeMap;
+use std::collections::BTreeSet;
+use std::fmt::{self};
+use std::fmt::Debug;
+use std::fmt::Display;
+use std::io::{self};
+use std::io::Read;
+use std::io::Write;
+use std::path::Path;
+use std::path::PathBuf;
 use alloc::string::String as AString;
-use core::cmp::{max, min};
+use core::cmp::max;
+use core::cmp::min;
 use core::f32;
-
-use regex::{Captures, Regex};
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use serde_json::{self, json, Value};
-
+use regex::Captures;
+use regex::Regex;
+use serde::Deserialize;
+use serde::Serialize;
+use serde::de::DeserializeOwned;
+use serde_json::{self};
+use serde_json::Value;
+use serde_json::json;
 // ----------------------------------------------------------------------------
 pub use std::{env, fs};
 
@@ -24,11 +33,15 @@ extern crate alloc;
 
 // ----------------------------------------------------------------------------
 mod a {}
+
 mod b {}
 
 mod dolor {}
+
 mod ipsum {}
+
 mod lorem {}
+
 mod sit {}
 
 // ----------------------------------------------------------------------------
@@ -51,61 +64,72 @@ macro_rules! ipsum {
 
 // ----------------------------------------------------------------------------
 lorem!(
-        const _: u8 = 0;
+	const _ : u8 = 0;
 );
+
 ipsum!(
-    const _: u8 = 0;
+	const _ : u8 = 0;
 );
 
 // ----------------------------------------------------------------------------
-extern "C" {
-    static mut LOREM_EXTERN: i32;
+extern {
+
+	static mut LOREM_EXTERN: i32;
+
 }
 
 // ----------------------------------------------------------------------------
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+
 pub enum EnumLorem {
-    Ipsum,
-    Dolor(bool),
-    Sit { amet: u32, adipiscing: u64 },
+	Ipsum,
+	Dolor(bool),
+	Sit { amet : u32, adipiscing : u64 },
 }
 
 #[derive(Default, Debug, Serialize, Deserialize)]
+
 pub struct FieldAlign {
-    x: u32,
-    yy: u32,
-    zzz: u32,
+	x :   u32,
+	yy :  u32,
+	zzz : u32,
 }
 
 #[derive(Default, Debug, Serialize, Deserialize)]
-pub struct Foo { x: i32, y: i32, z: i32 }
+
+pub struct Foo {
+	x : i32,
+	y : i32,
+	z : i32,
+}
 
 #[derive(Default, Debug, Serialize, Deserialize)]
+
 pub struct Bar {
-    ipsum: i32,
-    dolor: i32,
-    sit: i32,
+	ipsum : i32,
+	dolor : i32,
+	sit :   i32,
 }
 
 // ----------------------------------------------------------------------------
-pub fn generic_compressed<Ipsum: Display+Debug=usize>() {}
-pub fn generic_wide<Ipsum: Display + Debug = usize>() {}
+pub fn generic_compressed<Ipsum : Display+Debug=usize>() {}
+
+pub fn generic_wide<Ipsum : Display+Debug=usize>() {}
 
 pub trait LoremTrait<T> {}
 
-impl<T> LoremTrait<T> for Vec<T>
-where
-    Option<T>: Clone,
-{
-}
+impl<T> LoremTrait<T> for Vec<T> where Option<T> : Clone {}
 
-impl<T> LoremTrait<T> for std::collections::VecDeque<T> where Option<T>: Clone {}
+impl<T> LoremTrait<T> for std::collections::VecDeque<T> where Option<T> : Clone {}
 
 struct DummyIter;
+
 impl Iterator for DummyIter {
-    const SIZE: usize = 0123456789;
-    fn next(&mut self) -> Option<Self::Item> { None }
-    type Item = i32;
+	type Item = i32;
+
+	const SIZE : usize = 0123456789;
+
+	fn next(&mut self) -> Option<Self::Item> { None }
 }
 
 // ----------------------------------------------------------------------------
@@ -122,85 +146,151 @@ impl Iterator for DummyIter {
 /// );
 /// # fn add_one(x: i32) -> i32 { x + 1 }
 /// ```
-pub fn add_one(x: i32) -> i32 { x + 1 }
+
+pub fn add_one(x : i32) -> i32 { x + 1 }
 
 // ----------------------------------------------------------------------------
-/* This is a block comment that rustfmt can optionally convert into a line
- * comment depending on the normalize_comments setting. It is also long enough
- * to exercise the wrap_comments option when enabled. Information on lorem
- * ipsum can be found at: https://en.wikipedia.org/wiki/Lorem_ipsum which is a
- * url that should prevent wrapping on that specific line. */
+// This is
+// a block
+// comment
+// that rustfmt
+// can optionally
+// convert
+// into a line
+// comment
+// depending
+// on the normalize_comments
+// setting.
+// It is also
+// long enough
+// to exercise the wrap_comments option when enabled. Information on lorem
+// ipsum can be found at: https://en.wikipedia.org/wiki/Lorem_ipsum which is a
+// url that should prevent wrapping on that specific line.
 
 // ----------------------------------------------------------------------------
 #[allow(unused_mut)]
+
 fn ranges_demo() {
-    let mut a = 0..10;
-    let b = 0..=10;
-    let v: Vec<i32> = (0..10).collect();
-    match 3 {
-        1..5 => (),
-        _ => (),
-    }
+
+	let mut a = 0 .. 10;
+
+	let b = 0 ..= 10;
+
+	let v : Vec<i32> = (0 .. 10).collect();
+
+	match 3
+	{
+		1 .. 5 => (),
+		_ => (),
+	}
 }
 
 // ----------------------------------------------------------------------------
-const HEXES: [u64; 5] = [0x0000_0000_0000_0000, 0xAAAA_AAAA_AAAA_AAAA, 0xbbbb_bbbb_bbbb_bbbb, 0xCCCC_CCCC_CCCC_CCCC, 0xDDDD_DDDD_DDDD_DDDD];
+const HEXES : [u64; 5] = [0x0000_0000_0000_0000,
+                          0xAAAA_AAAA_AAAA_AAAA,
+                          0xbbbb_bbbb_bbbb_bbbb,
+                          0xCCCC_CCCC_CCCC_CCCC,
+                          0xDDDD_DDDD_DDDD_DDDD];
 
 // ----------------------------------------------------------------------------
-const LONG_STR: &str = "ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing";
+const LONG_STR : &str = "ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing";
 
 // ----------------------------------------------------------------------------
 fn make_foo() -> Foo {
-    let x = 1; let y = 2; let z = 3;
-    let a = Foo { x, y, z }; // shorthand
-    let b = Foo { x: x, y: y, z: z }; // no shorthand
-    if x > 0 { a } else { b }
+
+	let x = 1;
+
+	let y = 2;
+
+	let z = 3;
+
+	let a = Foo { x, y, z }; // shorthand
+	let b = Foo { x : x,
+	              y : y,
+	              z : z, }; // no shorthand
+	if x > 0 { a } else { b }
 }
 
 // ----------------------------------------------------------------------------
 #[allow(clippy::needless_collect)]
+
 fn overflow_demo() {
-    fn foo<T>(_ctx: &str, _t: T) {}
-    let ctx = "ctx";
 
-    foo(ctx, |param: i32| {
-        let _ = param + 1;
-        param
-    });
+	fn foo<T>(_ctx : &str,
+	          _t : T) {
+	}
 
-    foo(ctx, Bar { ipsum: 1, dolor: 2, sit: 3 });
+	let ctx = "ctx";
 
-    foo(ctx, &[
-        1, 2, 3, 4, 5,
-    ]);
+	foo(
+	    ctx,
+	    |param : i32| {
 
-    foo(ctx, vec![1, 2, 3, 4, 5]);
+		    let _ = param + 1;
+
+		    param
+	    },
+	);
+
+	foo(
+	    ctx,
+	    Bar { ipsum : 1,
+	          dolor : 2,
+	          sit :   3, },
+	);
+
+	foo(
+	    ctx,
+	    &[1, 2, 3, 4, 5],
+	);
+
+	foo(
+	    ctx,
+	    vec![1, 2, 3, 4, 5],
+	);
 }
 
 // ----------------------------------------------------------------------------
-fn match_and_closure_demo(x: i32) {
-    let _ = Some(x).and_then(|maybe| match maybe {
-        0 => Some(1),
-        _ => None,
-    });
+fn match_and_closure_demo(x : i32) {
 
-    match x {
-        | 0 | 1 => println!("small"),
-        2 => {
-            println!("two");
-        }
-        3 => println!("three"),
-        _ => println!("other"),
-    }
+	let _ = Some(x).and_then(
+	                         |maybe| {
+		                         match maybe
+		                         {
+			                         0 => Some(1),
+		                                 _ => None,
+		                         }
+	                         },
+	);
+
+	match x
+	{
+		0 | 1 => println!("small"),
+		2 =>
+		{
+
+			println!("two");
+		}
+		3 => println!("three"),
+		_ => println!("other"),
+	}
 }
 
 // ----------------------------------------------------------------------------
 fn single_line_things() -> i32 { 42 }
 
 fn let_else_demo() {
-    let opt = Some(10);
-    let Some(v) = opt else { return };
-    if v > 5 { println!("gt5") } else { println!("le5") }
+
+	let opt = Some(10);
+
+	let Some(v) = opt
+	else
+	{
+
+		return
+	};
+
+	if v > 5 { println!("gt5") } else { println!("le5") }
 }
 
 fn return_semicolon() -> i32 { return 0; }
@@ -210,74 +300,107 @@ fn nested_parens() { (((((println!("nested")))))); }
 
 // ----------------------------------------------------------------------------
 fn try_demo() -> Result<(), io::Error> {
-    use std::fs::File;
-    use std::io::Read;
-    let mut s = String::new();
-    let mut f = File::open("/dev/null")?;
-    f.read_to_string(&mut s);
-    Ok(())
+
+	use std::fs::File;
+	use std::io::Read;
+
+	let mut s = String::new();
+
+	let mut f = File::open("/dev/null")?;
+
+	f.read_to_string(&mut s);
+
+	Ok(())
 }
 
 // ----------------------------------------------------------------------------
 #[doc = "Example item documentation via attribute"]
+
 pub struct DocAttrItem;
 
 // ----------------------------------------------------------------------------
-#[cfg(any())] use std::marker::PhantomData;
+#[cfg(any())]
+use std::marker::PhantomData;
 
 // ----------------------------------------------------------------------------
 #[allow(clippy::too_many_arguments)]
-fn many_args(
-    a: i32,
-    b: i32,
-    c: i32,
-    d: i32,
-    e: i32,
-    f: i32,
-) -> i32 { a + b + c + d + e + f }
+
+fn many_args(a : i32,
+             b : i32,
+             c : i32,
+             d : i32,
+             e : i32,
+             f : i32)
+             -> i32 {
+
+	a + b + c + d + e + f
+}
 
 fn destructuring() {
-    let Foo { x, y, z } = Foo { x: 1, y: 2, z: 3 };
+
+	let Foo { x, y, z } = Foo { x : 1,
+	                            y : 2,
+	                            z : 3, };
 }
 
 // ----------------------------------------------------------------------------
-fn spacing_demo<T: Eq>(t: T) {
-    let _lorem: Bar = Bar { ipsum: 1, dolor: 2, sit: 3 };
+fn spacing_demo<T : Eq>(t : T) {
+
+	let _lorem : Bar = Bar { ipsum : 1,
+	                         dolor : 2,
+	                         sit :   3, };
 }
 
 // ----------------------------------------------------------------------------
 mod reorder_demo {
-    use std::time::{Duration, SystemTime};
-    use std::cmp::{Ordering, Reverse};
-    use std::{mem, ptr};
+
+	use std::time::Duration;
+	use std::time::SystemTime;
+	use std::cmp::Ordering;
+	use std::cmp::Reverse;
+	use std::mem;
+	use std::ptr;
 }
 
 // ----------------------------------------------------------------------------
 fn main() {
-    // ----------------------------------------------------------
-    let _s = LONG_STR;
-    let _foo = make_foo();
-    overflow_demo();
-    match_and_closure_demo(2);
-    let_else_demo();
-    ranges_demo();
-    let _ = try_demo();
 
-    // ----------------------------------------------------------
-    let _hex_sum = HEXES.iter().sum::<u64>();
+	// ----------------------------------------------------------
+	let _s = LONG_STR;
 
-    // ----------------------------------------------------------
-    let _bar = Bar { ipsum: 10, dolor: 20, sit: 30 };
+	let _foo = make_foo();
 
-    // ----------------------------------------------------------
-    let _fa = FieldAlign { x: 1, yy: 2, zzz: 3 };
+	overflow_demo();
 
-    // ----------------------------------------------------------
-    nested_parens();
+	match_and_closure_demo(2);
 
-    // ----------------------------------------------------------
-    let _arr = [1, 2, 3, 1234567890];
+	let_else_demo();
 
-    // ----------------------------------------------------------
-    let _v = (0..10).map(|x| x + 1).filter(|x| x % 2 == 0).collect::<Vec<_>>();
+	ranges_demo();
+
+	let _ = try_demo();
+
+	// ----------------------------------------------------------
+	let _hex_sum = HEXES.iter().sum::<u64>();
+
+	// ----------------------------------------------------------
+	let _bar = Bar { ipsum : 10,
+	                 dolor : 20,
+	                 sit :   30, };
+
+	// ----------------------------------------------------------
+	let _fa = FieldAlign { x :   1,
+	                       yy :  2,
+	                       zzz : 3, };
+
+	// ----------------------------------------------------------
+	nested_parens();
+
+	// ----------------------------------------------------------
+	let _arr = [1, 2, 3, 1234567890];
+
+	// ----------------------------------------------------------
+	let _v = (0 .. 10).map(|x| x + 1)
+	                  .filter(|x| x % 2 == 0)
+	                  .collect::<Vec<_>>();
 }
